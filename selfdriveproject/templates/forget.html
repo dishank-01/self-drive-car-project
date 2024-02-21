@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- icon link from bootstrap page -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- favicon -->
+   <link href="static/image/favicon.png" rel="icon">
+    <title>ForgetPassword</title>
+    
+</head>
+<body >
+
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-4 mt-2 mx-auto shadow">
+                <h2 class="mb-5 text-center mt-3">ForgetPassword</h2>
+                {% if errormsg %}
+                <div class="alert alert-danger">
+                  {{errormsg}}
+                </div>
+                {% endif %}
+                
+                <form method="POST" action="/forget">
+                    {% csrf_token %}
+                    <div class="mb-3 ">
+                        <label for="input1" class="form-label"><strong>Username:</strong></label>
+                        <input type="email" class="form-control" id="input1" name="uname" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3 ">
+                        <label for="input2" class="form-label"><strong>NewPassward:</strong></label>
+                        <input type="password" class="form-control" id="input2" name="upass" placeholder="Enter passward">
+                    </div>
+                    <div class="mb-3">
+                        <label for="input3" class="form-label"><strong>Confirm Passward:</strong></label>
+                        <input type="password" class="form-control" id="input3" name="cupass" placeholder="Enter Passward">
+                    </div>
+                    <div class="mb-3  text-center" >
+                        <input type="submit" class="btn bg-info" value="ResetPassword">
+                        <br>
+                        Already user?&nbsp;&nbsp; <a href="/login" class="anchor mt-2 mb-3">Go to login</a>
+                    </div>
+                    {% if sucess %}
+                    <div class ="alert alert-success">
+                        {{sucess}}
+                    </div>
+                    {% endif %}
+                </form>
+              
+            </div>    
+        </div>
+    </div>
+
+
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/propper.js"></script>
+
+</body>
+</html>

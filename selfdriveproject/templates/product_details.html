@@ -1,0 +1,58 @@
+
+{% extends 'base.html' %}
+{% block 'main' %}
+                      <!--
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                      </li>
+                        -->
+
+                        <!--
+                      <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                      </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+
+        </div> <!--end of header-->
+    
+    <!--FOR DISHANK BHAI-->
+    <div class="row">
+        <div class="col md-8 mt-4 mx-auto">
+            <div class="row">
+                <div class="row">
+                  {% for x in products %}
+                    <div class="col-md-6">
+                        <img src="{{x.pimage.url}}" style="width:100%;height:100%;">
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>product name:</strong>&nbsp;&nbsp;{{x.name}}</p>
+                        <p><strong>Price:</strong>&nbsp;&nbsp;{{x.price}}</p>
+                        {% if x.category == 1 %}
+                        <p><strong>Category:</strong>&nbsp;&nbsp;mobile</p>
+                        {% elif x.category == 2 %}
+                        <p><strong>Category:</strong>&nbsp;&nbsp;shoes</p>
+                        {% else %}
+                        <p><strong>Category:</strong>&nbsp;&nbsp;clothes</p>
+                        {% endif %}
+                        <p><strong>location:</strong>&nbsp;&nbsp;{{x.location}}</p>
+                        <br>
+                        <a href="/addtocart/{{x.id}}"><button class="btn btn-danger">book a ride</button></a>
+                        <a href="/viewcart"><button class="btn btn-danger">view bookings</button></a>
+                        <a href="/homepage"><button class="btn btn-danger">see more</button></a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock 'main' %}
